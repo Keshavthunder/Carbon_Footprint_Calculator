@@ -104,7 +104,7 @@ def main():
     
     st.markdown("---")
 
-    locally = q2("What portion of your diet is grown locally (within 250kms)?", key="local_food_pct")
+    locally = q2("What portion of your diet is grown locally (within 250kms)?")
     
         
     st.header("Shopping")
