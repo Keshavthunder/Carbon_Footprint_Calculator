@@ -45,7 +45,8 @@ def main():
         kids = q3("How many kids in your household?", 0, 10, 1, 0, 10)
         washing_machine = st.selectbox("Do you use a washing machine?", ["Yes", "No"], key="wm_1")
     
-    # Use columns for energy consumption too
+    
+    st.markdown("---")
     c3, c4 = st.columns(2)
     with c3:
         energy = q3("Household Monthly Energy Consumption (kWh)?", 5000, 13700, 11000, 8772, 13700)
