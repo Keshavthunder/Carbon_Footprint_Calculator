@@ -110,7 +110,7 @@ def main():
     st.header("Shopping")
 
     clothes = q3("How many clothing items do you purchase per month?", 0, 40, 8, 0, 50)
-    electronics = q3("How many electronic items do you purchase per year?", 0, 20, 2, 0, 20)
+    electronics = q3("How many electronic items do you purchase per year? (Ex. Phones, laptops, TVs)", 0, 20, 2, 0, 20)
     waste = q3("How much waste do you generate per week (in kgs)?", 0, 50, 10, 0, 50)
     recycle = q2("What portion of your waste do you recycle or compost?")
 
