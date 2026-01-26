@@ -5,8 +5,86 @@ import textwrap
 
 # Get the absolute path to the folder where this script lives
 script_dir = os.path.dirname(os.path.abspath(__file__))
+def scale_number(unscaled, to_min, to_max, from_min, from_max):
+    return (to_max-to_min)*(unscaled-from_min)/(from_max-from_min)+to_min
 
+def q1(q):
+    options_list = ['Never', 'Occasionally', 'Regularly', 'Frequently', 'Always']
+    rating = st.select_slider(q, options=options_list)
+    #t.write("Your rating is", rating)
+    return (20*(1+options_list.index(rating)))
+
+def q2(q):
+    rating = st.slider(q, 0.00, 1.00, format = "percent",)
+
+    return (100*rating)
+
+def q3(q,min_val, max_val, default_val,avg_min, avg_max):
+    rating = st.slider(q,min_val, max_val, format = "compact", value=default_val)
+    
+    return scale_number(rating, 0, 100, avg_min, avg_max)
 def main():
+
+# Sliders are used for inputting the amount of carbon footprint in different areas of life
+
+    st.title("Carbon Footprint Visulaizer")
+    
+    st.write("This tool allows you to see the future of Earth in 10 years if every person on Earth, i.e. 8 billion people, lived a lifestyle similar to yours.")
+    st.write(textwrap.dedent("""For this magic, you will need to enter your carbon footprint in 4 areas of your life:  
+                             1. Housing  
+                             2. Transportation  
+                             3. Food  
+                             4. Shopping"""))
+
+    st.header("Housing")
+
+    adults = q3("How many adults live in your household?", 0, 10, 2, 0, 10)
+    kids = q3("How many kids live in your household?", 0, 10, 1, 0, 10)
+
+    dishwasher = st.selectbox("Do you use a dishwasher?", ["Yes", "No"])
+    washing_machine = st.selectbox("Do you use a washing machine?", ["Yes", "No"])
+
+    energy = q3("How much energy does your household consume monthly (in kWh)?", 5000, 13700,11000, 8772, 13700)
+    e_energy = q2("What portion of your energy is from renewable sources?")
+    energy_conservation = st.selectbox("Do you practice energy conservation methods (e.g. turning off lights when not in use)?", ["Yes", "No"])
+
+
+
+    st.header("Transportation")
+
+    car = q3("How many kilometers do you drive a car per week?", 0, 3000, 500, 0, 3000)
+    car_type = st.selectbox("What type of car do you drive?", ["Gasoline", "Diesel", "Hybrid", "Electric"])
+    bike = q3("How many kilometers do you ride a bike per week?", 0, 500, 0, 0, 500)
+    bike_type = st.selectbox("What type of bike do you ride?", ["Regular", "Electric"])
+    public = q3("How many kilometers do you use public transportation per week?", 0, 2000, 200, 0, 2000)
+
+    d_flight = q3("How many domestic flights do you take per year? Consider a roundtrip as 2 flights", 0, 50, 2, 0, 50)
+    i_flight = q3("How many international flights do you take per year? Consider a roundtrip as 2 flights", 0, 20, 1, 0, 20)
+
+    st.header("Food")
+    st.subheader("Dietary Habits")
+
+    veg = q1("How often do you eat a vegetarian meal?")
+    dairy = q1("How often do you consume dairy products?")
+    red_meat = q1("How often do you eat red meat?")
+    poultry = q1("How often do you eat poultry?")
+    seafood = q1("How often do you eat seafood?")
+    out = q1("How often do you eat out at restaurants or order takeout?")
+
+    locally = q2("What portion of your diet is grown locally, i.e. within 250kms?")
+
+    st.header("Shopping")
+
+    clothes = q3("How many clothing items do you purchase per month?", 0, 40, 8, 0, 50)
+    electronics = q3("How many electronic items do you purchase per year?", 0, 20, 2, 0, 20)
+    waste = q3("How much waste do you generate per week (in kgs)?", 0, 50, 10, 0, 50)
+    recycle = q2("What portion of your waste do you recycle or compost?")
+
+
+
+
+    if st.button("Render Your World"):
+        st.write("To BE CONTINUED")
     st.title("Sustainable Living Visualizer")
     
     score = st.slider("Select your impact level:", 1, 9, 4)
