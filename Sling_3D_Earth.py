@@ -93,14 +93,14 @@ def main():
     food_col1, food_col2 = st.columns(2)
     
     with food_col1:
-        veg = q1("Vegetarian meal?", key="veg_q")
-        poultry = q1("Poultry?", key="poultry_q")
-        seafood = q1("Seafood?", key="seafood_q")
+        veg = q1("Vegetarian meal?")
+        poultry = q1("Poultry?")
+        seafood = q1("Seafood?")
     
     with food_col2:
-        red_meat = q1("Red meat?", key="meat_q")
-        dairy = q1("Dairy products?", key="dairy_q")
-        out = q1("Takeout?", key="takeout_q")
+        red_meat = q1("Red meat?")
+        dairy = q1("Dairy products?")
+        out = q1("Takeout?")
     
     st.markdown("---")
 
