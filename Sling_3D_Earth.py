@@ -36,18 +36,6 @@ def main():
                              4. Shopping""")
 
     st.header("Housing")
-
-    adults = q3("How many adults live in your household?", 0, 10, 2, 0, 10)
-    kids = q3("How many kids live in your household?", 0, 10, 1, 0, 10)
-
-    dishwasher = st.selectbox("Do you use a dishwasher?", ["Yes", "No"])
-    washing_machine = st.selectbox("Do you use a washing machine?", ["Yes", "No"])
-
-    energy = q3("How much energy does your household consume monthly (in kWh)?", 5000, 13700,11000, 8772, 13700)
-    e_energy = q2("What portion of your energy is from renewable sources?")
-    energy_conservation = st.selectbox("Do you practice energy conservation methods (e.g. turning off lights when not in use)?", ["Yes", "No"])
-
-    st.header("Housing")
     
     c1, c2 = st.columns(2)
     with c1:
@@ -60,10 +48,12 @@ def main():
     # Use columns for energy consumption too
     c3, c4 = st.columns(2)
     with c3:
-        energy = q3("Household Monthly Energy Consumption(kWh)?", 5000, 13700, 11000, 8772, 13700)
+        energy = q3("Household Monthly Energy Consumption (kWh)?", 5000, 13700, 11000, 8772, 13700)
     with c4:
         e_energy = q2("What portion of Monthly Energy is renewable energy?")
 
+    energy_conservation = st.selectbox("Do you practice energy conservation methods (e.g. turning off lights when not in use)?", ["Yes", "No"])
+    
     st.header("Transportation")
 
     car = q3("How many kilometers do you drive a car per week?", 0, 3000, 500, 0, 3000)
