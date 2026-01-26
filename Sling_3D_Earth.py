@@ -85,19 +85,28 @@ def main():
         
         i_flight = q3("No. of International flights/year? (Consider roundtrip as 2)", 0, 20, 1, 0, 20)
     public = q3("How many kilometers do you use public transportation per week?", 0, 2000, 200, 0, 2000)
-    
+
+
     st.header("Food")
     st.subheader("Dietary Habits")
+    st.write("How often do you consume:")
+    food_col1, food_col2 = st.columns(2)
+    
+    with food_col1:
+        veg = q1("Vegetarian meal?", key="veg_q")
+        poultry = q1("Poultry?", key="poultry_q")
+        seafood = q1("Seafood?", key="seafood_q")
+    
+    with food_col2:
+        red_meat = q1("Red meat?", key="meat_q")
+        dairy = q1("Dairy products?", key="dairy_q")
+        out = q1("Takeout?", key="takeout_q")
+    
+    st.markdown("---")
 
-    veg = q1("How often do you eat a vegetarian meal?")
-    dairy = q1("How often do you consume dairy products?")
-    red_meat = q1("How often do you eat red meat?")
-    poultry = q1("How often do you eat poultry?")
-    seafood = q1("How often do you eat seafood?")
-    out = q1("How often do you eat out at restaurants or order takeout?")
-
-    locally = q2("What portion of your diet is grown locally, i.e. within 250kms?")
-
+    locally = q2("What portion of your diet is grown locally (within 250kms)?", key="local_food_pct")
+    
+        
     st.header("Shopping")
 
     clothes = q3("How many clothing items do you purchase per month?", 0, 40, 8, 0, 50)
