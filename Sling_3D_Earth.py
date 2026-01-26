@@ -47,7 +47,23 @@ def main():
     e_energy = q2("What portion of your energy is from renewable sources?")
     energy_conservation = st.selectbox("Do you practice energy conservation methods (e.g. turning off lights when not in use)?", ["Yes", "No"])
 
-
+    st.header("Housing")
+    
+    # Split the household size and appliances into two rows of columns
+    c1, c2 = st.columns(2)
+    with c1:
+        adults = q3("How many adults?", 0, 10, 2, 0, 10)
+        dishwasher = st.selectbox("Use a dishwasher?", ["Yes", "No"])
+    with c2:
+        kids = q3("How many kids?", 0, 10, 1, 0, 10)
+        washing_machine = st.selectbox("Use a washing machine?", ["Yes", "No"])
+    
+    # Use columns for energy consumption too
+    c3, c4 = st.columns(2)
+    with c3:
+        energy = q3("Monthly Energy (kWh)?", 5000, 13700, 11000, 8772, 13700)
+    with c4:
+        e_energy = q2("Portion of renewable energy?")
 
     st.header("Transportation")
 
