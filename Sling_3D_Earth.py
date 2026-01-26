@@ -87,7 +87,7 @@ def main():
 
 
     score = st.slider("Select your impact level:", 1, 9, 4)
-    st.subheader("If everyone lived like you, we would need", score, "Earths:")
+    st.subheader(f"If everyone lived like you, we would need {score} Earths:")
 
     # Construct the path to the video file
     video_path = os.path.join(script_dir, "videos", f"{score}.mp4")
