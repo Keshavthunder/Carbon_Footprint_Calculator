@@ -55,48 +55,34 @@ def main():
     energy_conservation = st.selectbox("Do you practice energy conservation methods (e.g. turning off lights when not in use)?", ["Yes", "No"])
     
     st.header("Transportation")
-
-    car = q3("How many kilometers do you drive a car per week?", 0, 3000, 500, 0, 3000)
-    car_type = st.selectbox("What type of car do you drive?", ["Gasoline", "Diesel", "Hybrid", "Electric"])
-    bike = q3("How many kilometers do you ride a bike per week?", 0, 500, 0, 0, 500)
-    bike_type = st.selectbox("What type of bike do you ride?", ["Regular", "Electric"])
     
-
-    d_flight = q3("How many domestic flights do you take per year? Consider a roundtrip as 2 flights", 0, 50, 2, 0, 50)
-    i_flight = q3("How many international flights do you take per year? Consider a roundtrip as 2 flights", 0, 20, 1, 0, 20)
-
-    
-    st.header("Transportation")
-    
-    # --- Row 1: Cars and Bikes ---
     col1, col2 = st.columns(2)
     
     with col1:
-        car = q3("Car km per week?", 0, 3000, 500, 0, 3000)
+        car = q3("Car driven per week (km)?", 0, 3000, 500, 0, 3000)
         car_type = st.selectbox(
             "Car Engine Type", 
             ["Gasoline", "Diesel", "Hybrid", "Electric"], 
-            key="car_engine_select" # Unique key to prevent ID clash
+            key="car" 
         )
     
     with col2:
-        bike = q3("Bike km per week?", 0, 500, 0, 0, 500)
+        bike = q3("Bike driven per week (km)?", 0, 500, 0, 0, 500)
         bike_type = st.selectbox(
             "Bike Type", 
             ["Regular", "Electric"], 
-            key="bike_type_select" # Unique key to prevent ID clash
+            key="bike" 
         )
     
-    # --- Row 2: Public Transit and Flights ---
-    st.markdown("---") # Visual separator
+    st.markdown("---")
     col3, col4 = st.columns(2)
     
     with col3:
-        d_flight = q3("Domestic flights/year?", 0, 50, 2, 0, 50)
+        d_flight = q3("No. of Domestic flights/year? (Consider roundtrip as 2)", 0, 50, 2, 0, 50)
     
     with col4:
         
-        i_flight = q3("International flights/year?", 0, 20, 1, 0, 20)
+        i_flight = q3("No. of International flights/year? (Consider roundtrip as 2)", 0, 20, 1, 0, 20)
     public = q3("How many kilometers do you use public transportation per week?", 0, 2000, 200, 0, 2000)
     
     st.header("Food")
