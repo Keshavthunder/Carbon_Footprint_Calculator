@@ -29,11 +29,11 @@ def main():
     st.title("Carbon Footprint Visulaizer")
     
     st.write("This tool allows you to see the future of Earth in 10 years if every person on Earth, i.e. 8 billion people, lived a lifestyle similar to yours.")
-    st.write(textwrap.dedent("""For this magic, you will need to enter your carbon footprint in 4 areas of your life:  
+    st.write("""For this magic, you will need to enter your carbon footprint in 4 areas of your life:  
                              1. Housing  
                              2. Transportation  
                              3. Food  
-                             4. Shopping"""))
+                             4. Shopping""")
 
     st.header("Housing")
 
