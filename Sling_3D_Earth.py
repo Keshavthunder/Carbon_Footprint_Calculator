@@ -52,10 +52,10 @@ def main():
     c1, c2 = st.columns(2)
     with c1:
         adults = q3("How many adults in your household?", 0, 10, 2, 0, 10)
-        dishwasher = st.selectbox("Do you use a dishwasher?", ["Yes", "No"])
+        dishwasher = st.selectbox("Do you use a dishwasher?", ["Yes", "No"], key="dw_1")
     with c2:
         kids = q3("How many kids in your household?", 0, 10, 1, 0, 10)
-        washing_machine = st.selectbox("Do you use a washing machine?", ["Yes", "No"])
+        washing_machine = st.selectbox("Do you use a washing machine?", ["Yes", "No"], key="wm_1")
     
     # Use columns for energy consumption too
     c3, c4 = st.columns(2)
