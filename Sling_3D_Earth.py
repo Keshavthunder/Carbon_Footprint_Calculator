@@ -1,7 +1,6 @@
 import streamlit as st
 import os
 import numpy as np
-import textwrap
 
 # Get the absolute path to the folder where this script lives
 script_dir = os.path.dirname(os.path.abspath(__file__))
