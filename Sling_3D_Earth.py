@@ -73,7 +73,7 @@ def main():
         )
     
     with col2:
-        bike = q3("Bike driven per week (km)?", 0, 500, 0, 0, 500)
+        bike = q4("Bike driven per week (km)?", 0, 500, 0)
         bike_type = st.selectbox(
             "Bike Type", 
             ["Regular", "Electric"], 
@@ -142,6 +142,20 @@ def main():
         housing_per_person = housing_subtotal / total_people
         st.metric("Housing Footprint", f"{housing_per_person:.2f} kg CO2e/year")
         #Transportation Totals
+
+        car_factors = {
+            "Gasoline": 0.19,
+            "Diesel": 0.17,
+            "Hybrid": 0.11,
+            "Electric": 0.05
+        }
+        car_annual = (car * 52) * car_factors[car_type]
+        bike_annual = (bike * 52) * 0.01
+        public_annual = (public * 52) * 0.07
+        flights_annual = (d_flight * 150) + (i_flight * 800)
+        transport_total = car_annual + bike_annual + public_annual + flights_annual
+    
+        st.metric("Transport Footprint", f"{transport_total:,.0f} kg CO2e/year")
         st.write("To BE CONTINUED")
 
 
