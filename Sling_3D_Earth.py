@@ -54,7 +54,7 @@ def main():
     st.markdown("---")
     c3, c4 = st.columns(2)
     with c3:
-        energy = q4("Household Monthly Energy Consumption (kWh)?", 200, 2000, 850)
+        energy = q4("Household Monthly Energy Consumption (kWh)?", 20, 1500, 450)
     with c4:
         e_energy = q2("What portion of Monthly Energy is renewable energy?")
 
@@ -129,7 +129,19 @@ def main():
     if st.button("Render Your World"):
         # Housing Totals
         total_people = max(1, (adults + 0.7*kids))
-        annual_energy_co2 = (energy * 12) * 0.4 * (1 - (e_energy / 100))
+        annual_energy_co2 = (energy * 12) * 0.3 * (1 - (e_energy / 300))
+        appliance_co2 = 0
+        if dishwasher == "Yes":
+            appliance_co2 += 10
+        if washing_machine == "Yes":
+            appliance_co2 += 10
+        housing_subtotal = annual_energy_co2 + appliance_co2
+        if energy_conservation == "Yes":
+            housing_subtotal *= 0.85
+
+        housing_per_person = housing_subtotal / total_people
+        st.metric("Housing Footprint", f"{housing_per_person:.2f} kg CO2e/year")
+        #Transportation Totals
         st.write("To BE CONTINUED")
 
 
