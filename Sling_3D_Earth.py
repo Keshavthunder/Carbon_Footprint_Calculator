@@ -156,6 +156,25 @@ def main():
         transport_total = car_annual + bike_annual + public_annual + flights_annual
     
         st.metric("Transport Footprint", f"{transport_total:,.0f} kg CO2e/year")
+
+        #Food Totals
+        def get_intensity(val):
+            return (val - 20) / 80.0
+
+        meat_co2    = get_intensity(red_meat) * 2500
+        dairy_co2   = get_intensity(dairy) * 900
+        poultry_co2 = get_intensity(poultry) * 550
+        seafood_co2 = get_intensity(seafood) * 600
+        veg_co2     = get_intensity(veg) * 400
+        takeout_co2 = get_intensity(out) * 600
+
+        base_food_total = meat_co2 + dairy_co2 + poultry_co2 + seafood_co2 + veg_co2 + takeout_co2
+
+        local_offset = (locally / 100.0) * 0.10
+        food_total = base_food_total * (1 - local_offset)
+
+        st.metric("Food Footprint", f"{food_total:,.0f} kg CO2e/year")
+        
         st.write("To BE CONTINUED")
 
 
