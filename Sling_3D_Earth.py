@@ -84,12 +84,12 @@ def main():
     col3, col4 = st.columns(2)
     
     with col3:
-        d_flight = q3("No. of Domestic flights/year? (Consider roundtrip as 2)", 0, 50, 2, 0, 50)
+        d_flight = q4("No. of Domestic flights/year? (Consider roundtrip as 2)", 0, 50, 2)
     
     with col4:
         
-        i_flight = q3("No. of International flights/year? (Consider roundtrip as 2)", 0, 20, 1, 0, 20)
-    public = q3("How many kilometers do you use public transportation per week?", 0, 2000, 200, 0, 2000)
+        i_flight = q4("No. of International flights/year? (Consider roundtrip as 2)", 0, 20, 1)
+    public = q4("How many kilometers do you use public transportation per week?", 0, 2000, 200)
 
 
     st.header("Food")
