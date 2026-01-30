@@ -22,6 +22,11 @@ def q3(q,min_val, max_val, default_val,avg_min, avg_max):
     rating = st.slider(q,min_val, max_val, format = "compact", value=default_val)
     
     return scale_number(rating, 0, 100, avg_min, avg_max)
+
+def q4(q,min_val, max_val, default_val):
+    rating = st.slider(q,min_val, max_val, format = "compact", value=default_val)
+    
+    return rating
 def main():
 
 # Sliders are used for inputting the amount of carbon footprint in different areas of life
@@ -39,17 +44,17 @@ def main():
     
     c1, c2 = st.columns(2)
     with c1:
-        adults = q3("How many adults in your household?", 0, 10, 2, 0, 10)
+        adults = q4("How many adults in your household?", 0, 10, 2)
         dishwasher = st.selectbox("Do you use a dishwasher?", ["Yes", "No"], key="dw_1")
     with c2:
-        kids = q3("How many kids in your household?", 0, 10, 1, 0, 10)
+        kids = q4("How many kids in your household?", 0, 10, 1)
         washing_machine = st.selectbox("Do you use a washing machine?", ["Yes", "No"], key="wm_1")
     
     
     st.markdown("---")
     c3, c4 = st.columns(2)
     with c3:
-        energy = q3("Household Monthly Energy Consumption (kWh)?", 5000, 13700, 11000, 8772, 13700)
+        energy = q4("Household Monthly Energy Consumption (kWh)?", 200, 2000, 850)
     with c4:
         e_energy = q2("What portion of Monthly Energy is renewable energy?")
 
@@ -60,7 +65,7 @@ def main():
     col1, col2 = st.columns(2)
     
     with col1:
-        car = q3("Car driven per week (km)?", 0, 3000, 500, 0, 3000)
+        car = q4("Car driven per week (km)?", 0, 3000, 500)
         car_type = st.selectbox(
             "Car Engine Type", 
             ["Gasoline", "Diesel", "Hybrid", "Electric"], 
@@ -117,7 +122,14 @@ def main():
 
 
 
+
+
+    
+
     if st.button("Render Your World"):
+        # Housing Totals
+        total_people = max(1, (adults + 0.7*kids))
+        annual_energy_co2 = (energy * 12) * 0.4 * (1 - (e_energy / 100))
         st.write("To BE CONTINUED")
 
 
