@@ -151,7 +151,7 @@ def main():
         flights_annual = (d_flight * 150) + (i_flight * 800)
         transport_total = car_annual + bike_annual + public_annual + flights_annual
     
-        st.metric("Transport Footprint", f"{transport_total:,.0f} kg "+'  ' + r"$\mathrm{CO}_2$e/year")
+        st.metric("Transport Footprint", f"{transport_total:,.0f} kg fr"+'  ' + r"$\mathrm{CO}_2$e/year")
 
         #Food Totals
         def get_intensity(val):
