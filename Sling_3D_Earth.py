@@ -184,7 +184,14 @@ def main():
         
         shopping_total = clothing_co2 + electronics_co2 + waste_co2
         st.metric("Shopping Footprint", f"{shopping_total:,.0f} kg CO2e/year")
-        
+
+        grand_total = housing_per_person + transport_total + food_total + shopping_total
+    
+        st.markdown("### Grand Total")
+        st.metric("Your Annual Carbon Footprint", f"{grand_total:,.0f} kg CO2e")
+
+        earths = grand_total / 4000
+        score = max(1, min(9, int(round(earths))))
         st.write("To BE CONTINUED")
 
 
