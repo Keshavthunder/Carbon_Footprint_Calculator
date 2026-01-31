@@ -196,7 +196,7 @@ def main():
         
         st.divider() 
         with st.spinner('Calculating global impact and rendering your world...'):
-            time.sleep(7) 
+            time.sleep(3) 
         
         video_path = os.path.join(script_dir, "videos", f"{score}.mp4")
     
