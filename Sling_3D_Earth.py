@@ -8,7 +8,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 def scale_number(unscaled, to_min, to_max, from_min, from_max):
     return (to_max-to_min)*(unscaled-from_min)/(from_max-from_min)+to_min
 
-def q1(q, def_index=0):
+def q1(q, def_index=2):
     options_list = ['Never', 'Occasionally', 'Regularly', 'Frequently', 'Always']
     rating = st.select_slider(q, options=options_list, value=options_list[def_index])
     #t.write("Your rating is", rating)
