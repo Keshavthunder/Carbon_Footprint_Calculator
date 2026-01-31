@@ -188,7 +188,14 @@ def main():
 
         earths = grand_total / 4000
         score = max(1, min(9, int(math.ceil(earths))))
-        st.write("To BE CONTINUED")
+
+        data = {
+            "Housing": housing_per_person,
+            "Transport": transport_total,
+            "Food": food_total,
+            "Shopping": shopping_total
+        }
+        st.bar_chart(data)
 
 
     #score = st.slider("Select your impact level:", 1, 9, 4)
