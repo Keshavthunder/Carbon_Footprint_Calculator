@@ -1,6 +1,7 @@
 import streamlit as st
 import os
-import numpy as np
+
+import math
 
 # Get the absolute path to the folder where this script lives
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -186,7 +187,7 @@ def main():
         st.metric("Your Annual Carbon Footprint", f"{grand_total:,.0f} kg CO2e")
 
         earths = grand_total / 4000
-        score = max(1, min(9, int(round(earths))))
+        score = max(1, min(9, int(math.ceil(earths))))
         st.write("To BE CONTINUED")
 
 
