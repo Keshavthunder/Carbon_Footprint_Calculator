@@ -188,7 +188,7 @@ def main():
         st.metric("Your Annual Carbon Footprint", f"{grand_total:,.0f} kg " + r"$\mathrm{CO}_2$e")
 
         earths = grand_total / 4000
-        score = max(1, min(9, int(math.ceil(earths))))
+        score = max(1, min(10, int(math.ceil(earths))))
 
 
         #score = st.slider("Select your impact level:", 1, 9, 4)
