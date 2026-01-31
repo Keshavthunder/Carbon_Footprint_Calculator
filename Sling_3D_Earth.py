@@ -136,7 +136,7 @@ def main():
             housing_subtotal *= 0.85
 
         housing_per_person = housing_subtotal / total_people
-        st.metric("Housing Footprint", f"{housing_per_person:.2f} kg CO2e/year")
+        st.metric("Housing Footprint", f"{housing_per_person:.2f} kg " + r"$\mathrm{CO}_2$e/year")
         #Transportation Totals
 
         car_factors = {
@@ -151,7 +151,7 @@ def main():
         flights_annual = (d_flight * 150) + (i_flight * 800)
         transport_total = car_annual + bike_annual + public_annual + flights_annual
     
-        st.metric("Transport Footprint", f"{transport_total:,.0f} kg CO2e/year")
+        st.metric("Transport Footprint", f"{transport_total:,.0f} kg " + r"$\mathrm{CO}_2$e/year")
 
         #Food Totals
         def get_intensity(val):
@@ -169,7 +169,7 @@ def main():
         local_offset = (locally / 100.0) * 0.10
         food_total = base_food_total * (1 - local_offset)
 
-        st.metric("Food Footprint", f"{food_total:,.0f} kg CO2e/year")
+        st.metric("Food Footprint", f"{food_total:,.0f} kg " + r"$\mathrm{CO}_2$e/year")
 
         #Shopping Total
         clothing_co2 = (clothes * 12) * 15
@@ -179,7 +179,6 @@ def main():
         waste_co2 = non_recycled_waste * 1.2
         
         shopping_total = clothing_co2 + electronics_co2 + waste_co2
-        #st.metric("Shopping Footprint", f"{shopping_total:,.0f} kg CO2e/year")
         st.metric("Shopping Footprint", f"{shopping_total:,.0f} kg " + r"$\mathrm{CO}_2$e/year")
 
         grand_total = housing_per_person + transport_total + food_total + shopping_total
