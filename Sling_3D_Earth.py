@@ -18,12 +18,7 @@ def q2(q):
 
     return (100*rating)
 
-def q3(q,min_val, max_val, default_val,avg_min, avg_max):
-    rating = st.slider(q,min_val, max_val, format = "compact", value=default_val)
-    
-    return scale_number(rating, 0, 100, avg_min, avg_max)
-
-def q4(q,min_val, max_val, default_val):
+def q3(q,min_val, max_val, default_val):
     rating = st.slider(q,min_val, max_val, format = "compact", value=default_val)
     
     return rating
@@ -44,17 +39,17 @@ def main():
     
     c1, c2 = st.columns(2)
     with c1:
-        adults = q4("How many adults in your household?", 0, 10, 2)
+        adults = q3("How many adults in your household?", 0, 10, 2)
         dishwasher = st.selectbox("Do you use a dishwasher?", ["Yes", "No"], key="dw_1")
     with c2:
-        kids = q4("How many kids in your household?", 0, 10, 1)
+        kids = q3("How many kids in your household?", 0, 10, 1)
         washing_machine = st.selectbox("Do you use a washing machine?", ["Yes", "No"], key="wm_1")
     
     
     st.markdown("---")
     c3, c4 = st.columns(2)
     with c3:
-        energy = q4("Household Monthly Energy Consumption (kWh)?", 20, 1500, 450)
+        energy = q3("Household Monthly Energy Consumption (kWh)?", 20, 1500, 450)
     with c4:
         e_energy = q2("What portion of Monthly Energy is renewable energy?")
 
@@ -65,7 +60,7 @@ def main():
     col1, col2 = st.columns(2)
     
     with col1:
-        car = q4("Car driven per week (km)?", 0, 3000, 500)
+        car = q3("Car driven per week (km)?", 0, 3000, 500)
         car_type = st.selectbox(
             "Car Engine Type", 
             ["Gasoline", "Diesel", "Hybrid", "Electric"], 
@@ -73,7 +68,7 @@ def main():
         )
     
     with col2:
-        bike = q4("Bike driven per week (km)?", 0, 500, 0)
+        bike = q3("Bike driven per week (km)?", 0, 500, 0)
         bike_type = st.selectbox(
             "Bike Type", 
             ["Regular", "Electric"], 
@@ -84,12 +79,12 @@ def main():
     col3, col4 = st.columns(2)
     
     with col3:
-        d_flight = q4("No. of Domestic flights/year? (Consider roundtrip as 2)", 0, 50, 2)
+        d_flight = q3("No. of Domestic flights/year? (Consider roundtrip as 2)", 0, 50, 2)
     
     with col4:
         
-        i_flight = q4("No. of International flights/year? (Consider roundtrip as 2)", 0, 20, 1)
-    public = q4("How many kilometers do you use public transportation per week?", 0, 2000, 200)
+        i_flight = q3("No. of International flights/year? (Consider roundtrip as 2)", 0, 20, 1)
+    public = q3("How many kilometers do you use public transportation per week?", 0, 2000, 200)
 
 
     st.header("Food")
@@ -114,9 +109,9 @@ def main():
         
     st.header("Shopping")
 
-    clothes = q4("How many clothing items do you purchase per month?", 0, 40, 8)
-    electronics = q4("How many electronic items do you purchase per year? (Ex. Phones, laptops, TVs)", 0, 20, 2)
-    waste = q4("How much waste do you generate per week (in kgs)?", 0, 50, 10)
+    clothes = q3("How many clothing items do you purchase per month?", 0, 40, 8)
+    electronics = q3("How many electronic items do you purchase per year? (Ex. Phones, laptops, TVs)", 0, 20, 2)
+    waste = q3("How much waste do you generate per week (in kgs)?", 0, 50, 10)
     recycle = q2("What portion of your waste do you recycle or compost?")
 
 
@@ -129,7 +124,7 @@ def main():
     if st.button("Render Your World"):
         # Housing Totals
         total_people = max(1, (adults + 0.7*kids))
-        annual_energy_co2 = (energy * 12) * 0.3 * (1 - (e_energy / 300))
+        annual_energy_co2 = (energy * 12) * 0.3 * (1 - (e_energy / 125))
         appliance_co2 = 0
         if dishwasher == "Yes":
             appliance_co2 += 10
