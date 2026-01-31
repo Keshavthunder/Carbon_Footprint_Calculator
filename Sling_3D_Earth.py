@@ -194,6 +194,10 @@ def main():
         #score = st.slider("Select your impact level:", 1, 9, 4)
         st.subheader("If everyone lived like you, we would need:")
         
+        st.divider() 
+        with st.spinner('Calculating global impact and rendering your world...'):
+            time.sleep(5) 
+        
         video_path = os.path.join(script_dir, "videos", f"{score}.mp4")
     
         if os.path.exists(video_path):
