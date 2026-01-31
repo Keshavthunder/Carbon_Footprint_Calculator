@@ -188,7 +188,7 @@ def main():
 
         earths = grand_total / 4000
         score = max(1, min(9, int(math.ceil(earths))))
-"""
+        """
         data = {
             "Housing": housing_per_person,
             "Transport": transport_total,
@@ -196,9 +196,9 @@ def main():
             "Shopping": shopping_total
         }
         st.bar_chart(data)
-"""
+        """
 
-    #score = st.slider("Select your impact level:", 1, 9, 4)
+        #score = st.slider("Select your impact level:", 1, 9, 4)
         st.subheader("If everyone lived like you, we would need:")
         
         video_path = os.path.join(script_dir, "videos", f"{score}.mp4")
