@@ -114,9 +114,9 @@ def main():
         
     st.header("Shopping")
 
-    clothes = q3("How many clothing items do you purchase per month?", 0, 40, 8, 0, 50)
-    electronics = q3("How many electronic items do you purchase per year? (Ex. Phones, laptops, TVs)", 0, 20, 2, 0, 20)
-    waste = q3("How much waste do you generate per week (in kgs)?", 0, 50, 10, 0, 50)
+    clothes = q4("How many clothing items do you purchase per month?", 0, 40, 8)
+    electronics = q4("How many electronic items do you purchase per year? (Ex. Phones, laptops, TVs)", 0, 20, 2)
+    waste = q4("How much waste do you generate per week (in kgs)?", 0, 50, 10)
     recycle = q2("What portion of your waste do you recycle or compost?")
 
 
@@ -174,6 +174,16 @@ def main():
         food_total = base_food_total * (1 - local_offset)
 
         st.metric("Food Footprint", f"{food_total:,.0f} kg CO2e/year")
+
+        #Shopping Total
+        clothing_co2 = (clothes * 12) * 15
+        electronics_co2 = electronics * 300
+        waste_annual_kg = (waste * 52)
+        non_recycled_waste = waste_annual_kg * (1 - (recycle / 100))
+        waste_co2 = non_recycled_waste * 1.2
+        
+        shopping_total = clothing_co2 + electronics_co2 + waste_co2
+        st.metric("Shopping Footprint", f"{shopping_total:,.0f} kg CO2e/year")
         
         st.write("To BE CONTINUED")
 
