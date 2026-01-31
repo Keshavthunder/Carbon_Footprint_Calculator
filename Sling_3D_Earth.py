@@ -184,7 +184,7 @@ def main():
         grand_total = housing_per_person + transport_total + food_total + shopping_total
     
         st.markdown("### Grand Total")
-        #st.metric("Your Annual Carbon Footprint", f"{grand_total:,.0f} kg $\\text{'CO'}_2$e")
+        st.metric("Your Annual Carbon Footprint", f"{grand_total:,.0f} kg $CO_2$e")
         st.metric("Grand Total", f"{grand_total:,.0f} kg " + r"$\mathrm{CO}_2$e")
 
         earths = grand_total / 4000
